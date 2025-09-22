@@ -1,5 +1,5 @@
 import { doSignInWithGoogle, doSignOut } from "../components/firebase";
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { useAuth } from "../context/authContext";
 import Galaxy from "../components/Galaxy";
 import TodosAdd from "../components/TodosAdd";

@@ -3,12 +3,14 @@ import { useMessage } from "../context/messageContext";
 const TodosAdd = () => {
   const { message , showMessage } = useMessage();
   const token = localStorage.getItem("token") || "";
+  const api = process.env.REACT_APP_URL;
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
       const title = e.target[0].value.trim();
-      await fetch("http://localhost:5000/todos", {
+      await fetch(`${api}todos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

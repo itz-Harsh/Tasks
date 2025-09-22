@@ -7,9 +7,12 @@ const TodosGET = () => {
 
   const token = localStorage.getItem("token") || "";
 
+  const api = process.env.REACT_APP_URL;
+  // console.log(api);
+
  const fetchTodos = async () => {
     try {
-      const res = await fetch("http://localhost:5000/todos", {
+      const res = await fetch(`${api}todos`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const result = await res.json();
@@ -28,7 +31,7 @@ const TodosGET = () => {
 
   const deleteHandler = async (id) => {
     try {
-      await fetch(`http://localhost:5000/todos/${id}`, {
+      await fetch(`${api}todos/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +47,7 @@ const TodosGET = () => {
 
   const updateHandler = async (id, done) => {
     try {
-      await fetch(`http://localhost:5000/todos/${id}`,{
+      await fetch(`${api}todos/${id}`,{
         method: "PUT",
         headers: {
           "Content-type": "application/json",
